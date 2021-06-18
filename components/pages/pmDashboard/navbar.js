@@ -1,4 +1,4 @@
-import React , {useState , useEffect} from 'react'
+import React,{useState , useEffect} from 'react'
 import logo from '../../images/sdx logo.png'
 import noprofile from '../../images/noprofile.jpg'
 import {signout} from '../../Helpers/auth/index'
@@ -14,12 +14,14 @@ const Navbar = ({name})=>{
           pathname : "/"
         })
        }
-    const [pmAdmin , setPmAdmin] = useState("")
-    useEffect(() => {
-      const getData = localStorage.getItem("name")
-      setPmAdmin(getData)
-    } , [])
 
+       useEffect(() => {
+        const getName = localStorage.getItem('name')
+        console.log(getName)
+        setPmName(getName)
+      } , [])
+      const [pmName , setPmName] = useState('')
+  
 
     return(
         <>
@@ -29,7 +31,7 @@ const Navbar = ({name})=>{
               
               <div style={{float: 'right'}}>
               <div class="dropdown">
-                <span className = "adminName">{pmAdmin}(PM)</span>
+              <span className ="adminName">{pmName}(pm)</span>&nbsp;
                <img src={noprofile} alt='img' className="dropbtn" style={{height: 35, width: 35, borderRadius: 17, marginTop: 15}} className='' />
               <div class="dropdown-content">
                 <a onClick ={onSignout}>Logout</a>

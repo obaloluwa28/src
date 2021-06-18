@@ -16,6 +16,7 @@
     height: 40px;
     border: 3px solid rgb(8, 90, 104);
     background-color: white;
+    display: flex;
 }
 .barr input{
     width: 92%;
@@ -291,6 +292,7 @@
        margin-left: 25%;
        margin-top: -70px; 
    }
+
    .okon{
        display: flex;
        flex-direction: row;
@@ -298,11 +300,35 @@
        height: 100px; */
        /* border: 2px solid gray; */
    }
+
    .dblast{
     width: 200px;
     height: 40px;
     margin-left: 15px;
 }
+
+.mysearchicon2 {
+    font-size: 19px;
+    margin-top: 10px;
+    margin-right: 10px;
+  }
+
+.mysearchinput2{
+    font-size: 18px;
+    padding: 5px 10px;
+  }
+
+.pmTendertable{
+    width: 150px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(8, 90, 104);
+    border: 3px solid rgb(8, 90, 104);
+
+}
+
 .tvp{
     color: rgb(65, 62, 62);
     font-weight: bold;

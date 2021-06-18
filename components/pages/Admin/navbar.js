@@ -1,4 +1,4 @@
-import React , {useState , useEffect} from 'react'
+import React, {useState , useEffect} from 'react'
 import logo from '../../images/sdx logo.png'
 import noprofile from '../../images/noprofile.jpg'
 import {signout} from '../../Helpers/auth/index'
@@ -7,7 +7,14 @@ import { useHistory } from 'react-router-dom'
 const Navbar = ({name})=>{
     
     const history = useHistory()
-    const [adminName , setAdminName] = useState()
+
+    useEffect(() => {
+      const getName = localStorage.getItem('name')
+      console.log(getName)
+      setAdminName(getName)
+    } , [])
+
+    const [adminName , setAdminName] = useState('')
     
     const onSignout = () => {
         signout()
@@ -15,16 +22,6 @@ const Navbar = ({name})=>{
           pathname : "/"
         })
        }
-
-    useEffect(() => {
-
-      const getName = localStorage.getItem('name')
-      console.log(getName)
-       setAdminName(getName)
-
-    } , [])
-
-    
   
 
     return(
@@ -35,7 +32,7 @@ const Navbar = ({name})=>{
               
               <div style={{float: 'right'}}>
               <div className="dropdown">
-               < span className = "adminName">{adminName}(admin)</span>
+              <span className ="adminName">{adminName}(Admin)</span>&nbsp;
                <img src={noprofile} alt='img' className="dropbtn" style={{height: 35, width: 35, borderRadius: 17, marginTop: 15}} className='' />
               <div className="dropdown-content">
                 <a onClick={onSignout}>Logout</a>

@@ -15,7 +15,7 @@ import './tender3.css'
 
 import LabelField from './LabelField';
 
-const Details2 = (changePhases,tenderDescription)=>{
+const Details2 = (changePhases)=>{
 
     const [refno, setRefno] = useState('')
     const [title, setTitle] = useState('')

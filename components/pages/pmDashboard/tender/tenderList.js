@@ -6,10 +6,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 import AddTender from './addTender'
 import axios from 'axios'
 import { API } from '../../../Helpers/environment/backend';
-import {  Route, Link,Switch,BrowserRouter } from "react-router-dom";
-
 import './tender.css'
-import AddTender2 from './addTender2';
 
 // const tender = [
 //     {
@@ -50,35 +47,15 @@ const TenderList = ()=>{
 
     const [loading, setLoading] = useState(false);
     const [step, setStep] = useState(1);
-    const [stepy, setStepy] = useState(1);
-    const [tendername, setTendername]= useState('')
-    const [tenderref, setTenderref]=useState('')
-    const [tenderId, setTenderId]=useState('')
-    const [tenderdescp, setTenderdescp]= useState('')
-    const [tenderodate, setTenderodate]=useState('')
-    const [tendercdate, setTendercdate]=useState('')
-    const [stat, setStat]=useState('')
     const [pending, setPending] = useState([]);
 
     const changeStep = ()=>{
         setStep(2)
     }
-    const changeSteps = ()=>{
-        setStepy(2)
-    }
-    // const chan = ()=>{
-    //     <AddTender2/>
-    // }
-  
+
     const changePhase = ()=>{
         setStep(1)
     }
-    const changePhases = ()=>{
-        setStep(3)
-    }
- 
-
-   
     useEffect(()=>{
         
         setPending([])
@@ -101,34 +78,9 @@ const TenderList = ()=>{
         }
         
     }
-    const click = (tenderId,tenderref,tendername,closeDate,openDate,stat,tenderDescription)=>{
-        var res = openDate.substring(0,10)
-        var re = closeDate.substring(0,10)
-        var od = res;
-        var oc = re;
-        
-        setTenderId(tenderId)
-        setStat(stat)
-        console.log(stat)
-        setTenderref(tenderref)
-        setTenderdescp(tenderDescription)
-        console.log(tenderId)
-        console.log(tenderref)
-        // setTenderdescp(tenderdescp)
-        setTenderodate(res)
-        console.log(res)
-        setTendercdate(re)
-        console.log(re)
-
-        setTendername(tendername)
-        console.log(tendername)
-        setStep(2)
-        // setPhase(2)
-    }
-
     return(
         <div style={{marginLeft: 20}}>
-          {step === 1 ? <> 
+          {step === 1 ? <>
             <h4 className='titleee'>Tenders
             </h4><br/>
             <nav className='barrr'>
@@ -137,7 +89,7 @@ const TenderList = ()=>{
             </nav>
             <span style={{float: 'right', marginRight: 70, marginTop: -30}}>
             <Tooltip placement="bottom" title="Add Tender" >
-            <button className='attachdoc'>
+            <button className='attachdoc' onClick={changeStep}>
                  <BiPlusMedical size={27} style={{color: '#0c6980'}} />                  
             </button>
             </Tooltip>
@@ -176,14 +128,18 @@ const TenderList = ()=>{
                 <tr className='tr' key={item.tenderRef}>  
                 <td >{item.tenderRef}</td>
                 <td >{item.tenderTitle}</td>  
-                <td>({2}) </td>  
+                <td>{item.bidder} </td>  
                 <td>
                 Open: {item.openDate}<br/>
                 Close: {item.closeDate}
                  </td>  
                 <td>{status} </td> 
                 <td>
-                <button onClick={()=> click(item.id, item.tenderRef,item.tenderTitle,item.closeDate,item.openDate,item.status,item.tenderDescription)} className='sendButton' >View</button> 
+                 <select className='reason'>
+                    <option value=''>Action</option>
+                    <option value='view'>View</option>
+                    <option value='edit'>Edit</option>
+                 </select>
                 </td> 
                 </tr>
               )
@@ -194,14 +150,7 @@ const TenderList = ()=>{
                 }
            
             </div>
-         </>  : <AddTender2  id={tenderId} tenderTitle={tendername} tenderRef= {tenderref} closeDate={tendercdate}  openDate={tenderodate} status={stat} tenderDescription={tenderdescp} changePhase={changePhase }  />     }
-         {/* <div className='dashbutton'>
-        {  stepy === 1 ? <>
-            </> : <AddTender2
-             
-            />
-         }
-         </div> */}
+         </> : <AddTender changePhase={changePhase} />}
         </div>
     )
 }

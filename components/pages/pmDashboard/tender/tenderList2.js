@@ -2,9 +2,6 @@ import React,{useState, useEffect} from 'react'
 import Loader from "react-loader-spinner";
 import { AiOutlineUpload} from "react-icons/ai";
 import { AiOutlineSearch} from "react-icons/ai";
-import axios from 'axios'
-import { API } from '../../../Helpers/environment/backend';
-import fileDownload from 'js-file-download'
 
 import AddTender from './addTender'
 import './tender.css'
@@ -48,8 +45,6 @@ const TenderList2 = ()=>{
 
     const [loading, setLoading] = useState(false);
     const [step, setStep] = useState(1);
-    const [doclist, setDoclist] = useState([]);
-    const [action, setAction] = useState('')
 
     const changeStep = ()=>{
         setStep(2)
@@ -58,72 +53,7 @@ const TenderList2 = ()=>{
     const changePhase = ()=>{
         setStep(1)
     }
-    
-    useEffect(()=>{
-       
-        setDoclist([])
-       getDocument(); 
 
-    },[])
-    const handleDownload = (url, filename) => {
-       
-        axios.get(url, {
-          responseType: 'blob',
-        })
-        .then((res) => {
-          fileDownload(res.data, filename)
-        })
-        .catch(err => console.log(err))
-      } 
-      const onAction = ( urll)=>{
-        console.log(urll)
-  
-        //   setAction(e.target.value)
-          
-        //   if(e.target.value === 'view'){
-        //       let url = urll
-        //       window.open(url, '_blank');
-        //   }
-        //   else if(e.target.value === 'download'){
-             var res = urll.split("/");
-             console.log(res)
-             console.log(urll)
-             handleDownload(urll, res[4])
-             console.log(urll)
-  
-        //   }
-        //   else{
-        //       console.log('hello world')
-        //   }
-          
-      }
-    const getDocument = ()=>{
-        axios.get(`${API}tender/tenderdocuments/`)
-      
-        .then(res =>  setDoclist(res.data)
-        )
-     
-        .catch(err => {
-            console.log(err)
-        })
-     
-       }
-//        const getTenders = async ()=>{
-
-//         let id = localStorage.getItem('id')    
-//        try {
-//            const response = await axios.get(`${API}tender/tenderdocuments/`)
-//             console.log(response.data)
-       
-//        //    console.log(response)
-//        setPending(response.data)
-//            setLoading(false)
-//        } catch (error) {
-//            console.log(error)
-          
-//        }
-       
-//    }
     return(
         <div style={{marginLeft: 20}}>
                    <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
@@ -137,7 +67,7 @@ const TenderList2 = ()=>{
 
 
 </div>
-<h4 className='titleee'>
+<h4 className='titleee'>Add Tender
             </h4>
 
           {step === 1 ? <>
@@ -181,21 +111,21 @@ const TenderList2 = ()=>{
            </thead>  
 
           <tbody>  
-          {doclist && doclist.map(item=>{
-            //   let status = item.pendingStatus == "0" ? "Open" : item.pendingStatus == '1' ? "Completed" : "In Progress"
+          {tender && tender.map(item=>{
+              let status = item.pendingStatus == "0" ? "Open" : item.pendingStatus == '1' ? "Completed" : "In Progress"
               return(
-                <tr style = {{ paddingBottom: '20px', paddingTop: '20px',}}className='tr' key={item.id}>  
+                <tr style = {{ paddingBottom: '20px', paddingTop: '20px',}}className='tr' key={item.tenderRef}>  
                   <td  className='zero'>o</td>
                
-                <td >{item.documentName}</td>  
+                <td >{item.tenderName}</td>  
                
                 <td>
-                {item.publishDate}<br/>
+                {item.openTime}<br/>
             
                  </td>  
                
                 <td>
-                <button value='download' onClick={(e) => onAction( item.document)}><AiOutlineUpload size={26} color='secondary'/></button>
+                <button><AiOutlineUpload size={26} color='secondary'/></button>
                 </td> 
                 </tr>
               )

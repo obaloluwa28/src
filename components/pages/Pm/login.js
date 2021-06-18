@@ -4,7 +4,6 @@ import { authenticate, isAuthenticated, signin } from '../../Helpers/auth/index'
 import '../../../styles/pages/supplierStack.css'
 import { Link, Redirect } from 'react-router-dom'
 import Button from 'reactstrap-button-loader';
-import login from '../../images/3-Login.png'
 
 
 let admin;
@@ -117,6 +116,7 @@ const LoginPm = () => {
         if (isAuthenticated() && admin) {
             return <Redirect to="/admin/dashboard" />
         }
+
         // else if (isAuthenticated() && stepSup < 1) {
         //     return <Redirect to="/supplier/companydetails" />
         // } else if (isAuthenticated() && stepSup == 1) {
@@ -141,9 +141,10 @@ const LoginPm = () => {
             return <Redirect to="/pm/companydetails" />
         } else if (isAuthenticated() && stepPm == 1) {
             return <Redirect to="/pm/addproducts" />
-        } else if (isAuthenticated()) {
-            return <Redirect to="/pm/dashboard" />
+        }
 
+         else if (isAuthenticated()) {
+            return <Redirect to="/pm/dashboard" />
         }
 
 
@@ -157,7 +158,7 @@ const LoginPm = () => {
                 <aside id="sideBar">
 
 
-                <center ><img src = {login} width = {400} height = {600} style = {{marginTop : "80px"}}/></center>
+                    <h4 id="homeTitle"><center>SupplierStack</center></h4>
 
                 </aside>
                 {/* <div id = "Loginlink"></div> */}
@@ -171,7 +172,7 @@ const LoginPm = () => {
                         <label id="formLabel">Email</label><br />
                         <input id="formStylee" onChange={handleChange("email")} type="email" placeholder="email" /><br /><br />
                         <label id="formLabel">Password</label><br />
-                        <input id="formStylee " type="password" onChange={handleChange("password")} placeholder="password" /><br /><br />
+                        <input id="formStylee" type="password" onChange={handleChange("password")} placeholder="password" /><br /><br />
                         <input type="checkbox" id="check" />
                         <label id="checkRemember"><b>Remember me</b></label>
                         <Link to='#' id="reset-password">Reset Password?</Link>

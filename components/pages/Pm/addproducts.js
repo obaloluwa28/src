@@ -8,7 +8,6 @@ import { AiOutlineCheck } from 'react-icons/ai'
 import axios from 'axios'
 import { API, updateStep, updateStepPm } from '../../Helpers/environment/backend';
 import { Multiselect } from 'multiselect-react-dropdown';
-import addProducts from "../../images/5-ChooseCompanies.png"
 
 
 
@@ -347,7 +346,7 @@ const AddProducts = () => {
 
         <aside id="sideBar">
 
-        <center ><img src = {addProducts} width = {400} height = {600} style = {{marginTop : "80px"}}/></center>
+          <h4 id="homeTitle"><center>SupplierStack</center></h4>
 
         </aside>
         <section id="RegisterBar">
@@ -476,10 +475,11 @@ const AddProducts = () => {
                 <div id="SelectedStyle">
 
                   <div id="companySelect">
+                  <label id="formLabel" style={{ color: '#077b9e', fontSize: 16, fontWeight: 'bold' }}>Selected</label>
                     <center>{selectedCompanies.length > 0 ?
                       selectedCompanies.map((e, i) => (
                         <>
-                          <label id="formLabel" style={{ color: '#077b9e', fontSize: 16, fontWeight: 'bold' }}>Selected</label>
+                         
                           <p key={i} style={{ color: 'black' }}>{e.name}</p>
                         </>
                       )) : null

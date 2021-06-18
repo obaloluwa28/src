@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react'
 import {AiOutlineUpload, AiOutlineClose} from 'react-icons/ai'
 import Tooltip from '@material-ui/core/Tooltip';
@@ -31,7 +30,7 @@ let documentArray = []
 const Document = ()=>{
 
     const [doc, setDoc] = useState({})
-    const [documents, setDocuments] = useState([])
+    const [images, setImages] = useState([])
     const [name, setName] = useState('')
     const [loading, setLoading] = useState(false)
     const [size, setSize] = useState('')
@@ -46,13 +45,7 @@ const Document = ()=>{
         const hello = document.getElementById('doc1')
         hello.click();
       }
-    //   functionThatResetsTheFileInput() {
-    //     let randomString = Math.random().toString(36);
-      
-    //     this.setState({
-    //       theInputKey: randomString
-    //     });
-    //   }
+   
    const onChangeDoc = (e) => {
     // const reader = new FileReader();
     // reader.readAsDataURL(doc)
@@ -70,12 +63,12 @@ const Document = ()=>{
         rdr.readAsDataURL(file);
         rdr.onload = (t) => {
             // if(!doc.images) doc.images = []
-            documents.push(t.target.result)
+            images.push(t.target.result)
           
         }
     }
     
-  
+ 
     
 
     console.log(e.nativeEvent)
@@ -101,19 +94,29 @@ const Document = ()=>{
        // setDoc('')
         // setName('')
         // setSize('')
-        // resets();
-          // const reader = new FileReader();
+    }
+    const changePhases = ()=>{
+        setStep(1)
+    }
+    const changeStep = ()=>{
+        setStep(2)
+    }
+    const addDetails = (e)=>{
+        setStep(2)
+        e.preventDefault();
+        setLoading(true)
+        // const reader = new FileReader();
         // reader.readAsDataURL(doc)
         // reader.addEventListener("load",()=>{
         //     localStorage.setItem("recentdocs",reader.result)
         // })
         let id = localStorage.getItem('id')
         // let doc = localStorage.getItem('recentdocs')
-        let x= documents.toString();
+        
         let data = {
             
-        //   document: doc,
-          documents: x,
+          document: doc,
+        //   images,
           documentName:dname,
           documentType:dtype,
           documentDescription:desc
@@ -130,11 +133,7 @@ const Document = ()=>{
             console.log("This is our document ",documentArray)
             localStorage.setItem('currentDoc',JSON.stringify(dataParsed));
             console.log(dataParsed)
-            console.log(documents)
         }
-
-        
-        console.log(documentArray)
         
         axios({
             url: `${API}tender/tender/`,
@@ -151,98 +150,7 @@ const Document = ()=>{
            setLoading(false)
         })
         .catch(err => console.log(err))
-        // var a=[]
-        // documents=a
-        console.log(documents)
-        resets();
-        
     }
-    const resets = (e)=>{
-
-    //   dummy.length=0;
-       
-      
-    //     setFiles([...dummy])
-        
-        setDname('')
-        setDesc('')
-        setDtype('')
-       setDoc('')
-        setName('')
-        setSize('')
-        
-      
-        
-    }
-    const remove = (e)=>{
-
-       
-       
-        console.log(files)
-        setFiles([])
-    }
-    const refresh = (a)=>{
-
-        //   dummy.length=0;
-       
-      
-    //     setFiles([...dummy])
-   
-//     setDname('')
-//     setDesc('')
-//     setDtype('')
-//    setDoc('')
-//     setName('')
-//     setSize('')
-    
-
-       
-    }
-    const dele = (arr)=>{
-       dummy=[]
-      
-       
-     
-         setFiles([dummy])
-         console.log(dummy)
-    }
-    const reset = (e)=>{
-
-        //     e.preventDefault()
-           
-        //    dummy.push({
-        //        name: null,
-        //        file: null
-        //    })
-        //     setFiles([null])
-            
-        let randomString = Math.random().toString(36);
-      
-        this.setState({
-            theInputKey: randomString
-        });
-        }
-    const changePhases = ()=>{
-        setStep(1)
-    }
-    const changeStep = ()=>{
-        setStep(2)
-    }
-    const addDetails = (e)=>{
-        setStep(2)
-        // e.preventDefault();
-        // setLoading(true)
-        dele();
-        refresh();
-        // window.location.reload(false);
-      documentArray=[]
-    }
-    const del = (e) => {
-    
-        e.target.value = null;
-    }
-    
-        
     return(
         <div className='rock'>
              {step === 1 ? <> 
@@ -252,8 +160,6 @@ const Document = ()=>{
         <input className='refno' value={dname} placeholder='Document name'
             onChange={(e)=> setDname(e.target.value)}
         />
-
-
 
         <p className='parag'>Document Type</p>
         <select className='reff' value={dtype}
@@ -284,7 +190,6 @@ const Document = ()=>{
         </div>
         <br/><br/><br/>
         <button className='kont' onClick={onAdd}>Add</button>
-        <button className='kont' onClick={resets}>Remove</button>
      </div>
 
      <div className='bossup'>
@@ -304,7 +209,7 @@ const Document = ()=>{
                             <td className='tnamee'>{item.file} </td>
                             <td className='tnamee'>
                             <Tooltip placement="bottom" title="delete file" >
-                              <button type="reset"   onClick={dele} className='secc'>
+                              <button className='secc'>
                              <AiOutlineClose size={26} color='secondary'/>
                               </button>
                             </Tooltip> 

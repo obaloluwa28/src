@@ -4,8 +4,8 @@ import NavbarrPm from '../../layouts/navbarrPm'
 import { signup } from '../../Helpers/auth/index'
 import { Link } from 'react-router-dom'
 import Button from 'reactstrap-button-loader';
-import register from '../../images/1-Registration.png'
-
+import { set } from 'date-fns'
+import './pmregister.css'
 
 
 const RegisterPm = () => {
@@ -18,13 +18,7 @@ const RegisterPm = () => {
         is_procurementManager: true,
         RegistrationNo: "",
         phone: "",
-
-
-
     });
-
-
-
 
     const { companyName, email, password, error, success, RegistrationNo, phone, is_procurementManager = true } = values;
 
@@ -32,22 +26,68 @@ const RegisterPm = () => {
     const [passwordError, setPasswordError] = useState({})
     const [emailError, setEmailError] = useState({})
     const [loading, setLoading] = useState(false)
+    const [reTypeEmail, setRetypeEmail] = useState('')
+    const [reTypePassword, setReTypePassword] = useState('')
+    const [pass, setPass] = useState('')
+    const [passLength, setPassLength] = useState('')
+    const [emails, setEmails] = useState('')
 
+    const onPassword = ()=>{
+        if(password.trim() !== reTypePassword.trim()){
+            setPass('Passwords do not match')
+        }
+        else{
+            setPass('Password match')
+            let mycheck = true
+        }
+    }
 
+    const onEmail = ()=>{
+
+        if(email.trim() !== reTypeEmail.trim()){
+            setEmails('Emails do not match')
+        }
+        else{
+            setEmails('')
+        }
+    }
+
+    const passwordLength = () =>{
+        if(password.length <= 6){
+            setPassLength('Length must more than 6 characters')
+        }
+        else{
+            setPassLength('')
+        }
+    }
 
     const handleChange = name => event => {
-        setValues({ ...values, error: false, is_procurementManager: true, [name]: event.target.value })
+        setValues({
+            ...values, 
+            error: false, 
+            is_procurementManager: true, 
+            [name]: event.target.value
+        })
     };
-
 
 
     const onSubmit = (event) => {
         event.preventDefault();
 
+        setValues({
+            ...values, 
+            is_procurementManager: true,
+            error: false 
+        })
 
-        setValues({ ...values, is_procurementManager: true, error: false })
-
-        signup({ companyName, email, password, RegistrationNo, phone, is_procurementManager })
+        signup({
+            companyName, 
+            email, 
+            password, 
+            RegistrationNo, 
+            phone, 
+            is_procurementManager 
+        })
             .then((data) => {
                 console.log("DATA", data)
                 localStorage.setItem('email', data.email)
@@ -60,7 +100,8 @@ const RegisterPm = () => {
                         error: "",
                         success: true
                     })
-                } else {
+                } 
+                else {
                     setValues({
                         ...values,
                         error: true,
@@ -82,7 +123,6 @@ const RegisterPm = () => {
         )
     }
 
-
     const errorMessage = () => {
         return (
             <div className="alert alert-danger"
@@ -92,9 +132,12 @@ const RegisterPm = () => {
         )
     }
 
-
-
-
+    // const condition1Color = {
+    //     color: 'blue'
+    // }
+    // const condition2Color = {
+    //     color: 'red'
+    // }
 
     return (
         <>
@@ -102,11 +145,9 @@ const RegisterPm = () => {
             <div id="container">
 
                 <aside id="sideBar">
-
-
-                <center ><img src = {register} width = {400} height = {600} style = {{marginTop : "80px"}}/></center>
-
+                    <h4 id="homeTitle"><center>SupplierStack</center></h4>
                 </aside>
+                
                 {/* <div id = "bigline"></div> */}
                 <section id="RegisterBar">
                     {successMessage()}
@@ -114,19 +155,75 @@ const RegisterPm = () => {
                     <h4 id="headText">Company Registration</h4>
                     <br />
                     <label id="formLabel">Company Name</label><br />
-                    <input id="formStyle" onChange={handleChange("companyName")} type="text" placeholder="Company Name" /><br /><br />
+                    <input 
+                        id="formStyle" 
+                        onChange={handleChange("companyName")} 
+                        type="text" 
+                        placeholder="Company Name"
+                    /><br /><br />
+
                     <label id="formLabel">Company Registration No</label><br />
-                    <input id="formStyle" type="number" onChange={handleChange("RegistrationNo")} placeholder="Company Registration No" /><br /><br />
+                    <input 
+                        id="formStyle" 
+                        type="number" 
+                        onChange={handleChange("RegistrationNo")} 
+                        placeholder="Company Registration No" 
+                    /><br /><br />
+
                     <label id="formLabel">Company Teelephone</label><br />
-                    <input id="formStylee" type="tel" onChange={handleChange("phone")} placeholder="Company Teelephone" /><br /><br />
+                    <input 
+                        id="formStylee" 
+                        type="tel" 
+                        onChange={handleChange("phone")} 
+                        placeholder="Company Teelephone" 
+                    /><br /><br />
+
                     <label id="formLabel">Company Email</label><br />
-                    <input id="formStylee" type="email" onChange={handleChange("email")} placeholder="Company Email" /><br /><br />
+                    <input 
+                        id="formStylee" 
+                        type="email" 
+                        onChange={handleChange("email")} 
+                        placeholder="Company Email" 
+                    />
+                    <span style={{color: 'red', marginBottom: 15 }}>{emails} </span>
+                    <br /><br />
+
                     <label id="formLabel">Re-type Company Email</label><br />
-                    <input id="formStylee" type="email" onChange={handleChange("retypeEmail")} placeholder="Retype Company Email" /><br /><br />
+                    <input 
+                        id="formStylee"
+                        type="email" 
+                        onChange={handleChange("retypeEmail")} 
+                        placeholder="Retype Company Email" 
+                        onChange ={(e)=>{setRetypeEmail(e.target.value)}} 
+                        placeholder ="Company Email" 
+                        onBlur={onEmail}
+                    />
+                    <span style={{color: 'red', marginBottom: 15 }}>{emails} </span>
+                    <br /><br />
+
                     <label id="formLabel">Company Password</label><br />
-                    <input id="formStylee" type="password" onChange={handleChange("password")} placeholder="Company Password" /><br /><br />
+                    <input
+                        id="formStylee" 
+                        type="password" 
+                        onChange={handleChange("password")} 
+                        placeholder="Company Password"
+                        onBlur={passwordLength}
+                    />
+                    <span style={{color: 'red', marginBottom: 15 }}>{passLength} </span>
+                    <br /><br />
+                    
                     <label id="formLabel"> Confirm Company Password</label><br />
-                    <input id="formStylee" type="password" onChange={handleChange("retypePassword")} placeholder="Retype Company Password" /><br /><br />
+                    <input
+                        id="formStylee" 
+                        type="password" 
+                        onChange = {(e)=>{setReTypePassword(e.target.value)}} 
+                        placeholder="Retype Company Password" 
+                        onBlur={onPassword}
+                    />
+                    {/* <span> {pass === "Passwords do not match" ? condition1Color : condition2Color} </span> */}
+                    <span style={{color: 'red', marginBottom: 15 }}>{pass} </span>
+                    {/* console.log(pass) */}
+                    <br/><br/>
 
                     <Button id="buttonStyleRegister" onClick={onSubmit}>Submit</Button>
 
@@ -140,12 +237,7 @@ const RegisterPm = () => {
                 </footer>
             </div>
         </>
-
-
     )
-
-
-
 }
 
 export default RegisterPm

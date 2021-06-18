@@ -125,7 +125,7 @@
 }
 .refss:focus{
     border: 3px solid gray;   
-    outline: none;
+    outline: non
 }
 .secc{
     background-color: white;

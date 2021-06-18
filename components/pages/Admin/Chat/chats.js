@@ -27,10 +27,10 @@ const Chats = ()=>{
 
     useEffect(()=>{
 
-      setInterval(() => {
-        getInbox()
-        getConvo(receiver)
-      }, 2000);
+    //  setInterval(() => {
+       // getInbox()
+        //getConvo(receiver)
+   //   }, 2000);
       getInbox()
       getAlluser()
     }, [])

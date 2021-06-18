@@ -7,7 +7,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 import { BiUnderline } from 'react-icons/bi';
 
-const Details = ({changePhases,tenderDescription})=>{
+const Details = (changePhases)=>{
 
     const [refno, setRefno] = useState('')
     const [title, setTitle] = useState('')
@@ -67,12 +67,10 @@ const Details = ({changePhases,tenderDescription})=>{
         setInputList([...inputList, { Questions: "" }]);
       };
 
-    const addDetails = (e,tenderDescription)=>{
-      
-      setDesc(tenderDescription)
-      console.log(tenderDescription)
+    const addDetails = (e)=>{
+
         e.preventDefault();
-        // setLoading(true)
+        setLoading(true)
         let id = localStorage.getItem('id')
         let data = {
           tenderOwner: `${API}user/user/${id}/`,
@@ -94,7 +92,7 @@ const Details = ({changePhases,tenderDescription})=>{
            console.log(res)
         })
         .then(()=>{
-          //  setLoading(false)
+           setLoading(false)
         })
         .catch(err => console.log(err))
     }
@@ -133,11 +131,7 @@ const Details = ({changePhases,tenderDescription})=>{
 
            <p className='parag'>Description:</p>
           
-           <textarea  name="content"  data-provide="markdown"  rows="6" style={{width:'1150px',textDecoration:'underline'}}>
-             {tenderDescription}</textarea>
-             {/* <input className='refno' placeholder='Title' value={title}
-                onChange={(e)=> setTitle(e.target.value)}
-           /> */}
+           <textarea  name="content" data-provide="markdown" rows="6" style={{width:'1150px',textDecoration:'underline'}}></textarea>
            <br/><br/>
            <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
 <tr style={{ textAlign: 'left',marginRight: '50px', border: 'solid 3px' }}>
@@ -168,7 +162,7 @@ const Details = ({changePhases,tenderDescription})=>{
            {"  "}{"  "}
             <input
             style={{border:'solid 1px',width:'400px'}}
-              
+              name="Questions"
    placeholder="Create a Question"
               value={x.Questions}
               onChange={e => handleInputChange(e, i)}
@@ -186,7 +180,6 @@ const Details = ({changePhases,tenderDescription})=>{
       })}
            <br/><br/>
            <Button className='kont' loading={loading} onClick={addDetails}>Continue</Button>
-           <div style={{ marginTop: 20 }}>{JSON.stringify(inputList)}</div>
         </div>
     )
 }

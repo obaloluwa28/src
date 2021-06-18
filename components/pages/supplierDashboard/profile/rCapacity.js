@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import { API } from '../../../Helpers/environment/backend'
-import './rCapability.css'
+import './rCapacity.css'
 import Capability from './tradeCapability'
 
 
@@ -33,7 +33,7 @@ const Capacity = () => {
             value = false
         }
 
-        else if (name === 'certificate') {
+        else if (name === 'certificate'){
             value = e.target.files[0]
             console.log(value)
         }
@@ -84,8 +84,8 @@ const Capacity = () => {
 
 
             axios({
-                url: `${API}companyprofile/randdcapacity/`,
-                method: 'POST',
+                url: `${API}companyprofile/randdcapacity/`, 
+                method : 'POST',
                 headers: {
                     'content-type': 'multipart/form-data',
                 },

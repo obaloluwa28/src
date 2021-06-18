@@ -6,7 +6,6 @@ import axios from 'axios'
 import { API } from '../../../Helpers/environment/backend';
 import Loader from "react-loader-spinner";
 
-
 const data = [
     { name: 'Group A', value: 400 },
     { name: 'Group B', value: 300 },
@@ -58,7 +57,7 @@ const Dashboard = ()=>{
         <>
         <div className='dashh'>
             <div className='dash-item1'>
-            <h2>Admin Dashboard</h2>
+            <h2> Admin Dashboard</h2>
             <nav className='barr'>
                 <input  placeholder='search' />
                 <span ><AiOutlineSearch size={20} /> </span>

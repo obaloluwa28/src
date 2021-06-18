@@ -4,7 +4,7 @@ import Navbarr from '../../layouts/navbarr'
 import { signup } from '../../Helpers/auth/index'
 import { Link } from 'react-router-dom'
 import Button from 'reactstrap-button-loader';
-import register from "../../images/1-Registration.png"
+
 
 
 const Register = () => {
@@ -106,28 +106,28 @@ const Register = () => {
 
       const onEmail = ()=>{
 
-        if(email.trim() !== reTypeEmail.trim()){
-            setEmails('Emails do not match')
-        }
-        else{
-            setEmails('')
-        }
+            if(email.trim() !== reTypeEmail.trim()){
+                setEmails('Emails do not match')
+            }
+            else{
+                setEmails('')
+            }
         }
     
        const onPassword = ()=>{
-        if(password.trim() !== reTypePassword.trim()){
-            setPass('Passwords do not match')
-        }
-        else{
-            setPass('')
-        }
+            if(password.trim() !== reTypePassword.trim()){
+                setPass('Passwords do not match')
+            }
+            else{
+                setPass('')
+            }
         }
 
         const handleChangee = (e) => {
             //var checked = e.target.checked;
             setTerms(e.target.checked)
            // console.log(checked)
-          }
+        }
       
 
     return(
@@ -138,7 +138,7 @@ const Register = () => {
           <aside id = "sideBar">
             
             
-              <center ><img src = {register} width = {400} height = {600} style = {{marginTop : "80px"}}/></center>
+               <h4 id = "homeTitle"><center>SupplierStack</center></h4> 
             
           </aside>
          {/* <div id = "bigline"></div> */}
@@ -156,27 +156,64 @@ const Register = () => {
                   <input id = "formStylee" type = "text" required={true} onChange = {handleChange("TinNumber")} placeholder = "Company Tin Number"/><br/><br/>
                   <label id = "formLabel">Company Naicom Number</label><br/>
                   <input id = "formStylee" type = "text" required={true} onChange = {handleChange("NaicomNumber")} placeholder = "Company Naicom Number"/><br/><br/>
+                  
                   <label id = "formLabel">Company Telephone</label><br/>
-                  <input id = "formStylee" type = "tel" required={true} onChange = {handleChange("phone")}  placeholder = "Company Telephone"/><br/><br/>
+                  <input
+                    id = "formStylee"
+                    type = "tel"
+                    required={true}
+                    onChange = {handleChange("phone")}  
+                    placeholder = "Company Telephone"/>
+                    <br/><br/>
+                  
                   <label id = "formLabel">Company Email</label><br/>
-                  <input id ="formStylee" type = "email" required={true} onChange = {handleChange("email")}  placeholder = "Company Email"/><br/><br/>
+                  <input 
+                    id ="formStylee" 
+                    type = "email" required={true} 
+                    onChange = {handleChange("email")}  
+                    placeholder = "Company Email"/><br/><br/>
+
                   <label id = "formLabel">Re-type Company Email</label><br/>
-                  <input id = "formStylee" type = "email" required={true} onChange ={(e)=>{
-                      setRetypeEmail(e.target.value)
-                  }} placeholder ="Company Email" onBlur={onEmail}/>
+                  <input
+                    id = "formStylee" 
+                    type = "email" 
+                    required={true} 
+                    onChange ={(e)=>{ setRetypeEmail(e.target.value)}} 
+                    placeholder ="Company Email" 
+                    onBlur={onEmail}/>
                   <br/> 
+
                     <span style={{color: 'red', marginBottom: 15 }}>{emails} </span>
                   <br/>
+
                   <label id = "formLabel">  Password</label><br/>
-                  <input id = "formStylee" required={true} onChange = {handleChange("password")}  type="password" placeholder = " Password"/><br/><br/>
+                  <input 
+                    id = "formStylee" 
+                    required={true} 
+                    onChange = {handleChange("password")}  
+                    type="password" 
+                    placeholder = " Password" />
+                    <br/><br/>
+
                   <label id = "formLabel">  Re-type Password</label><br/>
-                  <input id = "formStylee" required={true} onChange = {(e)=>{
-                      setReTypePassword(e.target.value)
-                  }} onBlur={onPassword} type="password" placeholder ="Re-type Password"/>
-                  <br/>    
+                  <input 
+                    id = "formStylee" 
+                    required={true} 
+                    onChange = {(e)=>{setReTypePassword(e.target.value)}} 
+                    onBlur={onPassword} 
+                    type="password" 
+                    placeholder ="Re-type Password"/>
+                  <br/> 
+
                     <span style={{color: 'red', marginBottom: 15 }}>{pass} </span>
                   <br/><br/>
-                  <input type ="checkbox" defaultChecked={terms} id="check" onChange={handleChangee}/>
+
+                  <input 
+                    type ="checkbox" 
+                    defaultChecked={terms} 
+                    id="check" 
+                    onChange={handleChangee}/>
+
                   <label id ="checkRemember"><b>Please accept the Terms & Conditions</b></label>
                   <br/><span style={{color: 'red', fontSize: 15}}>{term} </span>
                   <br/><br/>

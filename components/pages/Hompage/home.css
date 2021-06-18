@@ -28,6 +28,7 @@
     margin-left: 10px;
     border: 1px solid rgb(13, 60, 61);
     border-radius: 5px;
+    padding-left: 10px;
 }
 .username:focus{
     outline: none;
@@ -131,4 +132,8 @@ p{
     color: white;
     font-size: 16px;
     padding-top: 6px;
+}
+
+.create{
+    margin-left: 12px;
 }

@@ -58,14 +58,14 @@ const Dashboard = ()=>{
         <div className='dashh'>
           
             <div className='dash-item1'>
-            <h2>Supplier Dashboard</h2>
+            <h2> Supplier Dashboard</h2>
             <nav className='barr'>
                 <input  placeholder='search' />
                 <span ><AiOutlineSearch size={20} /> </span>
             </nav>
-            <div className='active'>
+            {/* <div className='active'>
 
-          </div>
+          </div> */}
             <br/>
             <h5>Demand Blasts</h5>
             {loading ? (

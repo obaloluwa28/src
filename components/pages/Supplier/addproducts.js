@@ -8,7 +8,6 @@ import { AiOutlineCheck } from 'react-icons/ai'
 import axios from 'axios'
 import { API, updateStep } from '../../Helpers/environment/backend';
 import { Multiselect } from 'multiselect-react-dropdown';
-import addProducts from "../../images/5-ChooseCompanies.png"
 
 
 
@@ -221,11 +220,9 @@ const AddProducts = () => {
     axios.get(`${API}segment/segment/`)
       .then(res =>
         setSegment(res.data)
-
       )
       .catch(err => console.log(err))
   }
-  console.log(segment)
 
 
 
@@ -373,7 +370,7 @@ const AddProducts = () => {
 
         <aside id="sideBar">
 
-        <center ><img src = {addProducts} width = {400} height = {600} style = {{marginTop : "80px"}}/></center>
+          <h4 id="homeTitle"><center>SupplierStack</center></h4>
 
         </aside>
         <section id="RegisterBar">
@@ -386,7 +383,7 @@ const AddProducts = () => {
           {phase === 1 ?
             <>
               <h3 id="ProductHeader">Add Products
-       <span style={{ marginLeft: '18%', position: 'absolute', fontSize: 17 }}>Hi, {name}
+                <span style={{ marginLeft: '18%', position: 'absolute', fontSize: 17 }}>Hi, {name}
                   <button className='backed' onClick={onSignout} > Logout</button>
                   <span style={{ marginLeft: 10 }}><button className="backed" onClick={backk}>Back</button></span>
                 </span>
@@ -396,16 +393,16 @@ const AddProducts = () => {
               <div id="mainAddProduct">
                 <label id="formLabel">Segment</label><br />
                 <select id="formStyleSegment" onChange={changeSeg} >
-                  <option>Choose your Segment</option>
+                  <option>choose your Segment</option>
 
-                  {segment && segment.map((e, i) => (<option key={i} value={e.segmentName}>{e.id}-{e.segmentName}</option>
+                  {segment && segment.map((e, i) => (<option key={i} value={e.segmentName}>{e.segmentName}</option>
                   ))}
 
                 </select>
                 <br /><br />
                 <label id="formLabel">Family</label><br />
                 <select id="formStyleFamily" onChange={changeFamily}>
-                  <option>Choose your Family</option>
+                  <option>choose your Family</option>
 
 
                   {family && family.map((e, i) => (
@@ -533,7 +530,7 @@ const AddProducts = () => {
                 <div id="SelectedStyle">
 
                   <div id="companySelect">
-                    <label id="formLabel" style={{ color: '#077b9e', fontSize: 16, fontWeight: 'bold' }}>Selected</label>
+                    <label id="formLabel" style={{ color: '#077b9e', fontSize: 17, fontWeight: 'bold', textAlign: 'center' }}>Selected</label>
                     <center>{selectedCompanies.length > 0 ?
                       selectedCompanies.map((e, i) => (
                         <>

@@ -136,7 +136,7 @@
   
   /* Change color of dropdown links on hover */
   .dropdowns-content a:hover {
-    background-color:#064c5e;
+    background-color:#064c5e;;
     cursor: pointer;
   }
   a:hover {

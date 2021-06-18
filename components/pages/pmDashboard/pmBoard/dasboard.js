@@ -1,17 +1,27 @@
-import React,{useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import './dashboard.css'
-import { AiOutlineSearch} from "react-icons/ai";
+import { AiOutlineSearch } from "react-icons/ai";
 import { PieChart, Pie, Sector, Cell, ResponsiveContainer } from 'recharts';
 import axios from 'axios'
 import { API } from '../../../Helpers/environment/backend';
 import Loader from "react-loader-spinner";
+import {Link} from "react-router-dom";
+import Quickorder from "./Quickorder"
+
+
+
 
 let arr = []
-const Dashboard = ()=>{
+const Dashboard = () => {
 
   const [board, setBoard] = useState([])
   const [load, setLoad] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [step , setStep] = useState(1)
+
+  const quickorder = () => {
+    setStep(2)
+  }
 
   const arrr = [
     {
@@ -67,43 +77,51 @@ const Dashboard = ()=>{
     },
   ]
 
-  useEffect(()=>{
+  useEffect(() => {
     getDashboard()
   }, [])
 
-  const getDashboard = async ()=>{
-
-    
+  const getDashboard = async () => {
     try {
       setLoading(true)
-     const response = await axios.get(`${API}dashboard/dashboard/CSE/`)
-    // console.log(response.data.CSE)
+      const response = await axios.get(`${API}dashboard/dashboard/CSE/`)
+      // console.log(response.data.CSE)
       setBoard(response.data.CSE)
       arr = response.data.CSE
       console.log(arr[1])
       setLoading(false)
-     } catch (error) {
-   console.log(error)
-}
-}
-    return(
-        <>
-        <div className='dashh'>
-          
-            <div className='dashk-item1'>
-            <h2>PM Dashboard</h2>
-            <div className='okon'>
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  return (
+    <div>
+
+    {step === 1 ? <>   
+      <div className='dashh'>
+
+        <div className='dashk-item1'>
+          <h2> Pm Dashboard</h2>
+          <div className='okon'>
+
             <nav className='barr'>
-                <input  placeholder='search' />
-                <span ><AiOutlineSearch size={20} /> </span>
+              <input placeholder='Search' className="mysearchinput2" />
+              <span ><AiOutlineSearch className="mysearchicon2" /> </span>
             </nav>
+
             <div className='dblast'>
-            <button className='kontt'>Demand Blast</button>
+              <button className='kontt'>Demand Blast</button>
             </div>
+
+            <div className='dblast2'>
+              <button to="/quickorder" className='pmTendertable' onClick ={quickorder}>Quick Order</button>
             </div>
-            <br/>
-            <h5>Supplier Location</h5>
-            {/* {loading ? (
+          </div>
+        
+          <br />
+          <h5>Supplier Location</h5>
+          {/* {loading ? (
               <div style={{textAlign: 'center', marginTop: '5%'}}> <Loader
               type="Circles"
                color="gray"
@@ -111,18 +129,18 @@ const Dashboard = ()=>{
                  width={130}
               /> </div>
             ): */}
-            <div className='afrik'>
-              <div className='afrikk'>
-                <p className='tvp'>MAP</p>
-              </div>
-              <div className='afrikkk'>
-                <p className='tvp'>Top States</p>
-              </div>
-              </div>
-            {/* } */}
-            <div className='tvps'>
-              <nav className='tvps1'>
-            <p className='tvp'>Too Viewed Products</p>
+          <div className='afrik'>
+            <div className='afrikk'>
+              <p className='tvp'>MAP</p>
+            </div>
+            <div className='afrikkk'>
+              <p className='tvp'>Top States</p>
+            </div>
+          </div>
+          {/* } */}
+          <div className='tvps'>
+            <nav className='tvps1'>
+              <p className='tvp'>Too Viewed Products</p>
 
               <div className='tvpss1'>
                 <table className='tvtable'>
@@ -134,7 +152,7 @@ const Dashboard = ()=>{
                   </thead>
 
                   <tbody >
-                    {arrr && arrr.map(item =>(
+                    {arrr && arrr.map(item => (
                       <tr key={item.id}>
                         <td className='tvr'>{item.id} </td>
                         <td className='tvr'>{item.pname} </td>
@@ -145,10 +163,10 @@ const Dashboard = ()=>{
                   </tbody>
                 </table>
               </div>
-              </nav>
+            </nav>
 
-              <nav className='tvps2'>
-                <p className='tvp'>Latest Reviews</p>
+            <nav className='tvps2'>
+              <p className='tvp'>Latest Reviews</p>
               <div className='tvpss2' >
                 <table className='tvtable'>
                   <thead className='tvhead'>
@@ -159,7 +177,7 @@ const Dashboard = ()=>{
                   </thead>
 
                   <tbody >
-                    {arrrs && arrrs.map(item =>(
+                    {arrrs && arrrs.map(item => (
                       <tr key={item.id}>
                         <td className='tvrr'>{item.id} </td>
                         <td className='tvrr'>{item.pname} </td>
@@ -170,85 +188,87 @@ const Dashboard = ()=>{
                   </tbody>
                 </table>
               </div>
+            </nav>
+          </div>
+        </div>
+
+        <div className='dashk-item2'>
+          <h5 className='regpro'>Top Suppliers</h5>
+          <div className='pea'>
+
+          </div>
+        </div>
+
+        <div className='dashk-item3'>
+          <h5>Recent Activities</h5>
+          <div className='ddashk-item2'>
+            <div className='daash-time'>
+              <nav className='ddash-time'>
+                <p>23/05/2020 <br /> <span>5:30pm</span></p>
+              </nav>
+
+              <nav className='ddash-time'>
+                <p>23/05/2020 <br /> <span>5:30pm</span></p>
+              </nav>
+
+              <nav className='ddash-time'>
+                <p>23/05/2020 <br /> <span>5:30pm</span></p>
+              </nav>
+
+              <nav className='ddash-time'>
+                <p>23/05/2020 <br /> <span>5:30pm</span></p>
               </nav>
             </div>
-            </div>
-           
-            <div className='dashk-item2'>
-            <h5 className='regpro'>Top Suppliers</h5>
-            <div className='pea'>
-           
-            </div>
-            </div>
-            
-            <div className='dashk-item3'>
-            <h5>Recent Activities</h5>
-            <div className='ddashk-item2'>
-                <div className='daash-time'>
-                  <nav className='ddash-time'>
-                    <p>23/05/2020 <br/> <span>5:30pm</span></p>
-                  </nav>
 
-                  <nav className='ddash-time'>
-                    <p>23/05/2020 <br/> <span>5:30pm</span></p>
-                  </nav>
-
-                  <nav className='ddash-time'>
-                    <p>23/05/2020 <br/> <span>5:30pm</span></p>
-                  </nav>
-
-                  <nav className='ddash-time'>
-                    <p>23/05/2020 <br/> <span>5:30pm</span></p>
-                  </nav>
-                </div>
-
-                <div className='linerr'/>
-
-                <div>
-
-                </div>
-
-                <div className='daash-timee'>
-                <nav className='ddash-timee'>
-                    <p>Copper Ltd Approved <br/> <span>By Patricia Ojo</span></p>
-                  </nav>
-
-                  <nav className='ddash-timee'>
-                    <p>form 4356 rejected <br/> <span>By Patricia Ojo</span></p>
-                  </nav>
-
-                  <nav className='ddash-timee'>
-                    <p>form 7256 accepted <br/> <span>By Patricia Ojo</span></p>
-                  </nav>
-
-                  <nav className='ddash-timee'>
-                    <p>form 4926 rejected<br/> <span>By Patricia Ojo</span></p>
-                  </nav>
-                </div>
-              </div>
-
-              <h4 style={{marginLeft: 13, fontSize: 19, marginTop: 35}}>Supplier</h4>
-              <div className='ddashk-item1'>
-                <div className='avar'>
-                <p>22 Pending Approvals</p>
-                <p>327 Pending Enquires</p>
-                <p>43 Expiration Warnings</p>
-                <p>10 Reactivation Reminder</p>
-                <p>8 Pending Chats</p>
-                </div>
-              </div>
-            </div>
+            <div className='linerr' />
 
             <div>
 
             </div>
 
+            <div className='daash-timee'>
+              <nav className='ddash-timee'>
+                <p>Copper Ltd Approved <br /> <span>By Patricia Ojo</span></p>
+              </nav>
+
+              <nav className='ddash-timee'>
+                <p>form 4356 rejected <br /> <span>By Patricia Ojo</span></p>
+              </nav>
+
+              <nav className='ddash-timee'>
+                <p>form 7256 accepted <br /> <span>By Patricia Ojo</span></p>
+              </nav>
+
+              <nav className='ddash-timee'>
+                <p>form 4926 rejected<br /> <span>By Patricia Ojo</span></p>
+              </nav>
+            </div>
+          </div>
+
+          <h4 style={{ marginLeft: 13, fontSize: 19, marginTop: 35 }}>Supplier</h4>
+          <div className='ddashk-item1'>
+            <div className='avar'>
+              <p>22 Pending Approvals</p>
+              <p>327 Pending Enquires</p>
+              <p>43 Expiration Warnings</p>
+              <p>10 Reactivation Reminder</p>
+              <p>8 Pending Chats</p>
+            </div>
+          </div>
         </div>
-        </>
-    )
+
+        <div>
+
+        </div>
+
+      </div>
+
+    </> : <Quickorder />} 
+       </div>                         
+  )
+
 }
 
 export default Dashboard;
 
 
- 

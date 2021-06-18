@@ -1,7 +1,6 @@
 import React ,{useState , useEffect} from 'react'
 import NavbarrPm from '../../layouts/navbarrPm'
 import '../../../styles/pages/supplierStack.css'
-import emailVerify from '../../images/2-VerifyEmail.png'
 
 
 
@@ -22,7 +21,7 @@ const EmailVerifyPm = () => {
           <aside id = "sideBar">
             
             
-          <center ><img src = {emailVerify} width = {400} height = {600} style = {{marginTop : "80px"}}/></center>
+            <h4 id = "homeTitle"><center>SupplierStack</center></h4> 
          
           </aside>
 

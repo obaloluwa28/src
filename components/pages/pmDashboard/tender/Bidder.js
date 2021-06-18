@@ -44,7 +44,6 @@ const Bidder = ()=>{
     const [step, setStep] = useState(1)
     const [inputlist, setInputList] = useState([]);
     const [segment, setSegment] = useState([]);
-    const [segments, setSegments] = useState([]);
     const [marks, setMarks] = useState([]);
     const [loading, setLoading] = useState(false);
     const [id, setId] = useState(0)
@@ -52,7 +51,6 @@ const Bidder = ()=>{
     const [classProduct , setClassProduct] = useState([])
     const [productclass , setProductClass] = useState([])
     const [selectedCompanies , setSelectedCompanies] = useState([])
-    const [selectedCompany , setSelectedCompany] = useState([])
    
 
     const changePhases = ()=>{
@@ -61,35 +59,8 @@ const Bidder = ()=>{
     useEffect(()=>{
         getsegMent()
         getIndus()
-        getUnRegistered()
            
           }, [])
-          const getUnRegistered = async ()=>{
-            let myArray = []
-            
-            let e = localStorage.getItem('mark')
-            let id = localStorage.getItem('id')    
-           
-               const res = await axios.get(`${API}tender/tender/getUnRegisteredBidders/?id=${id}&industry=${e}`)
-                // console.log(res.data)
-                .then(res => {
-                    console.log(res)
-                    res.data.map(e =>
-                      myArray.push({
-                        name: e.fields.companyName,
-                        id: e.pk
-                        
-                      })
-                    )
-                    setSegments(myArray)
-                    // setAllCompany(myArray)
-                    console.log(myArray)
-                  
-                  })
-                  .catch(err => console.log(err))
-           
-           
-       }
           const getsegMent = async ()=>{
             let myArray = []
             
@@ -126,29 +97,29 @@ const Bidder = ()=>{
            
         }
 
-        // const onSubmitCompanies = (e) => {
-        //     e.preventDefault()
-        //     // Get the doc from localstorsge
-        //     const dataSaved = localStorage.getItem('currentDoc')
-        //     let formData = JSON.parse(dataSaved)
-        //     console.log(dataSaved)
+        const onSubmitCompanies = (e) => {
+            e.preventDefault()
+            // Get the doc from localstorsge
+            const dataSaved = localStorage.getItem('currentDoc')
+            let formData = JSON.parse(dataSaved)
+            console.log(dataSaved)
             
-        //     //  let options = {
-        //     //      method : "POST",
-        //     //      headers : {
-        //     //      Accept : "application/json",
-        //     //      "content-type" : "application/json"
-        //     //      },
-        //     //       body : JSON.stringify(bodyy)
-        //     //      }
-        //          console.log()
-        //          return fetch(`${API}user/supplier/updateSupplier/`, )
-        //         .then(res => {
+            //  let options = {
+            //      method : "POST",
+            //      headers : {
+            //      Accept : "application/json",
+            //      "content-type" : "application/json"
+            //      },
+            //       body : JSON.stringify(bodyy)
+            //      }
+                 console.log()
+                 return fetch(`${API}user/supplier/updateSupplier/`, )
+                .then(res => {
                  
-        //          res.json()
+                 res.json()
                 
                  
-        //        })
+               })
             //    .then(() => {
             //      let id = localStorage.getItem('id')
             //      if(statuss < 400){
@@ -163,13 +134,13 @@ const Bidder = ()=>{
          
             //      }
                 
-            // //    })
-            //    .catch(err => console.log(err))
+            //    })
+               .catch(err => console.log(err))
             
-            //  }
+             }
 
-             const addDetails = (e,datas)=>{
-                // setStep(2)
+             const addDetails = (e)=>{
+
                 e.preventDefault();
                 let statuss;
 
@@ -222,16 +193,17 @@ const Bidder = ()=>{
                         swal("Tender did not Save", "You clicked the button!", "error");
               
                       }
+
                       
-                //    localStorage.clear('currentDoc')
-                  
+
+                      
+                   console.log(res)
                 })
                 .then(()=>{
-                //    setLoading(false)
+                   setLoading(false)
                 })
                 .catch(err => console.log(err))
-                datas=null
-                // localStorage.setItem('currentDoc',datas)   
+                localStorage.removeItem('currentDoc');
             }
         const getIndus = async ()=>{
 
@@ -254,11 +226,6 @@ const Bidder = ()=>{
         
             setSelectedCompanies(select)
            console.log(selectedCompanies.map(item => item.id))
-        }
-        const SelectedComp = (select) => {
-        
-            setSelectedCompany(select)
-        //    console.log(selectedCompanies.map(item => item.id))
         }
 // const [state, setState] = useState('start')
 
@@ -309,7 +276,6 @@ const changeIndustry = (e) => {
             id="formStyleClass"
             options={segment} // Options to display in the dropdown
             showCheckbox={true}
-            required={true}
             avoidHighlightFirstOption={true}
             selectedValues={selectedCompanies}
             //selectedValues={selectedCompanies} // Preselected value to persist in dropdown
@@ -317,8 +283,6 @@ const changeIndustry = (e) => {
             onRemove={removeProduct} // Function will trigger on remove event
             displayValue="name" // Property name to display in the dropdown options
         />
-
-
       
 
     
@@ -330,33 +294,6 @@ const changeIndustry = (e) => {
 
         <br/><br/><br/>
         <button className='kont'>Add</button>
-        <hr class = "ProductLine"/>
-       <label id = "formLabel">Unregistered Companies</label><br/>
-
-       <Multiselect
-            id="formStyleClass"
-            options={segments} // Options to display in the dropdown
-            showCheckbox={true}
-            avoidHighlightFirstOption={true}
-            selectedValues={selectedCompany}
-            //selectedValues={selectedCompanies} // Preselected value to persist in dropdown
-            onSelect={SelectedComp} // Function will trigger on select event
-            onRemove={removeProduct} // Function will trigger on remove event
-            displayValue="name" // Property name to display in the dropdown options
-        />
-
-        
-      
-
-    
-       
-       
-      
-     
-   
-
-        <br/><br/><br/>
-        <button className='kont'>Send</button>
      </div>
 
      <div className='bossup'>
@@ -404,7 +341,7 @@ const changeIndustry = (e) => {
         </div><br/><br/>
         <div></div>
         <Tooltip placement="bottom" title="Add Tender" >
-            <button className='kont'  onClick={addDetails}>
+            <button className='kont' onClick={addDetails}>
                  Continue                
             </button>
             </Tooltip>
@@ -413,7 +350,7 @@ const changeIndustry = (e) => {
      <div>
                
             </div>
-            </> : <TenderList changePhases={changePhases} />}     
+            </> : <Details1 changePhases={changePhases} />}     
      </div>
     )
 }
