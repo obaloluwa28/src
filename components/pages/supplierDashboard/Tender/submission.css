@@ -1,0 +1,47 @@
+.submission{
+    width : 100%;
+    height : auto;
+   
+    
+}
+
+.submissionLeft{
+    float : left;
+    box-sizing: border-box;
+    width : 50%
+}
+.submissionRight{
+    float : right;
+    box-sizing: border-box;
+    width : 50%
+}
+.vertLines{
+    border-right: 2px solid gray;
+    width : 40%;
+    height : 600px;
+    margin-top : -50px;
+
+ 
+}
+.sumissionDocumentName{
+
+    color : gray;
+    zoom :1.1;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; 
+  
+}
+ .sumissionDocumentInput{
+    width : 50%;
+    border: 3px solid #0c6980;
+    padding : 15px;
+}
+.fileCage{
+    border : 3px solid #0c6980;
+    width: 50%;
+    height: auto;
+}
+.submitDocument{
+   padding : 15px;
+   background-color: #0c6980;
+   color : white;
+}

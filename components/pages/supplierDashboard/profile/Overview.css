@@ -1,0 +1,427 @@
+
+.sideNav{
+width : 100%;
+height : auto;
+background-color: white;
+display : flex;
+flex-direction: row;
+}
+.mainContents{
+    margin-left : 20%;
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    height : auto;
+    width : 80%;
+    display: flex;
+}
+
+div.sideLinks{
+    display : flex;
+    flex-direction: column;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    background-color: #0c6980;
+    padding : 10px;
+    height: 100%;
+    width : 15%;
+    position:fixed;
+    
+    
+}
+.linkStyle{
+    margin-top : 25px;
+    text-decoration: none;
+    color : white;
+    font-size: 16px;
+}
+.linkStyle:hover {
+    background-color: white;
+    color : #0c6980;
+    padding : 3px;
+    zoom : 1.0;
+
+}
+#title{
+    margin-left: 19px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.subTitle{
+    margin-left: 20px;
+    font-size: 14px;
+    color : #0c6980;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    
+}
+.albumTitle{
+    display : flex;
+    flex-direction: row;
+}
+.BasicInfo{
+    background-color: white;
+    width : 100%;
+    display : flex;
+    flex-direction: row;
+}
+.BasicInfoTitle{
+    width : 50%;
+    background-color: white;
+    padding : 15px;
+  
+    
+}
+.BasicInfoRating{
+    width : 50%;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    padding : 15px;
+    
+
+}
+.imageHolder{
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    padding : 28px;
+    text-align: center;
+
+}
+.slider{
+    color : #0c6980;
+}
+.BasicInfoTitleContents{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 15px;
+    color : gray;
+    margin-left : 20px;
+}
+.ratingBox{
+    border : 3px  solid #0c6980;
+    background-color: #0c6980;
+    color : white;
+    width : 20%;
+    height : auto;
+    padding : 10px;
+    margin-left: 25px;
+    
+}
+.ratingNumber{
+    zoom : 0.9;
+    color : white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.ratingReviews{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; 
+    zoom : 0.7;
+    color : white;
+}
+.supplierInfo{
+
+    background-color: white;
+     display: flex;
+    flex-direction: row;
+
+}
+.supplierInfoText{
+
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; 
+    zoom : 0.6;
+    color : gray; 
+   
+}
+.supplierBox{
+    margin-left: 25px;
+    margin-top: 20px;
+}
+
+.overviewTable {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  
+.overviewRows{
+    border: 1px solid #0c6980;
+    text-align: left;
+    padding: 10px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; 
+    zoom : 1.0;
+    color : gray;  
+   
+}
+
+.responseTableOverView{
+    padding : 20px;
+}
+.overMainProducts{
+    background-color: white;
+    margin-top: 30px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+
+}
+.productsSlider{
+    background-color: white;
+    margin-top: 70px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    padding :24px;
+   
+}
+.sliderTitle{
+    color : #0c6980;
+    zoom : 1.4;
+    text-align: center;
+   
+}
+.productCapacity{
+    background-color: white;
+    margin-top: 80px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+ 
+    
+}
+.customerCases{
+    background-color: white;
+    margin-top: 70px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    padding :14px;
+}
+.customerContent{
+    display : flex;
+    flex-direction: column;
+    width : 19%;
+    height: auto;
+    background-color: white;
+    margin-top: 70px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    padding :20px;  
+}
+
+.productionFlow{
+
+    background-color: white;
+    margin-top: 70px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    padding :14px;
+
+}
+.flow{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; 
+    zoom : 1.0;
+    color : #0c6980;
+
+
+}
+.subCategories{
+    display: flex;
+    flex-direction: row;
+    margin-left: 20px;
+    margin-top : 25px;
+}
+
+.productCapacitySlider{
+    color : #0c6980;
+    zoom : 1.4;
+    text-align: center;
+}
+.mainProductCapacity{
+    margin-top: 50px;
+    padding : 10px;
+}
+
+.productCapacityTable {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  .productCapacityTable2 {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 40px;
+  }
+  .productCapacityRows2{
+    border: 1px solid #0c6980;
+    text-align: center;
+    padding: 10px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; 
+    zoom : 1.0;
+    color : gray;  
+   
+}
+  
+  
+.productCapacityRows{
+    border: 1px solid #0c6980;
+    text-align: center;
+    padding: 10px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; 
+    zoom : 1.0;
+    color : gray;  
+   
+}
+.qualityControl{
+    background-color: white;
+    margin-top: 70px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    padding :14px;
+}
+.qualityControlSlider{
+    background-color: white;
+    margin-top: 70px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    padding :14px;
+}
+.qualitySliderTitle{
+    color : #0c6980;
+    zoom : 1.4;
+    text-align: center;
+}
+.customersubContent{
+    color : #0c6980;
+    zoom : 1.0;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; 
+    text-align: center;
+
+}
+.customersubContent1{
+    color : gray;
+    zoom : 1.0;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; 
+    text-align: center;
+}
+.customersubContent2{
+    color : gray;
+    zoom : 0.8;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; 
+    text-align: center;
+}
+.RandDContainer{
+    background-color: white;
+    margin-top: 70px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    padding :14px;
+}
+.RandDSlider{
+
+    background-color: white;
+    margin-top: 70px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    padding :14px;
+  }
+.tradeCapabilities{
+    background-color: white;
+    margin-top: 70px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    padding :14px;
+}
+.tradecapabilitiesSlider{
+    background-color: white;
+    margin-top: 70px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    padding :14px;
+
+}
+.buyerInteraction{
+    background-color: white;
+    margin-top: 70px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    padding :14px;
+}
+.buyerMain{
+    display : flex;
+    flex-direction: row;
+}
+.buyerSubMain1{
+    display : flex;
+    flex-direction: column;
+}
+.buyerSubMain2{
+    display : flex;
+    flex-direction: row;
+}
+.buyerSubMain3{
+    color : gray;
+    zoom :1.1;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; 
+    text-align: center;
+}
+.buyerSubMainA{
+    display : flex;
+    flex-direction: column;
+    margin-left: 20px;
+}
+.vertLines{
+    border-right: 2px solid gray;
+    width : 40%;
+    height : 40px;
+    margin-top: 40px;
+    margin-left: -150px;
+}
+.transactionHistory{
+    background-color: white;
+    margin-top: 50px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    padding :14px;
+}
+.vertLinesB{
+    border-right: 2px solid gray;
+    width : 40%;
+    height : 40px;
+    margin-top: 40px;
+    margin-left: -70px;
+}
+.vertLinesC{
+    border-right: 2px solid gray;
+    width : 40%;
+    height : 150px;
+    margin-top: 40px;
+    margin-left: -70px;
+
+}
+.factoryInspection{
+
+    background-color: white;
+    margin-top: 50px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    padding :14px;
+
+}
+.factoryInspectionSub{
+    display : flex;
+    flex-direction: row;
+}
+.factoryInspectionSub1{
+    display : flex;
+    flex-direction: column;
+}
+.factoryInspectionSub2{
+    display : flex;
+    flex-direction: column;
+    margin-left: 40px;
+}
+.sendMessage{
+
+    background-color: white;
+    margin-top: 50px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    padding :14px;
+
+}
+.sendMessageForm{
+    border : 3px solid #0c6980;
+    padding : 5px;
+    width: 70%;
+    border-radius: 5px;
+
+}
+.contentMessage{
+    border : 3px solid #0c6980;
+    padding : 5px;
+    width: 70%;
+    border-radius: 5px;
+}
+.sendButton{
+    background-color : #0c6980;
+    color : white;
+    border-radius: 5px;
+}

@@ -1,0 +1,82 @@
+.tenderDescription{
+    display : flex;
+    flex-direction: row;
+    margin-top: 40px;
+}
+.tenderDescriptionLabel{
+    zoom :1.1;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; 
+    margin-top: 10px;
+}
+.tenderDescriptionTextArea{
+    border : 3px solid #0c6980;
+    padding : 8px;
+    width: 58%;
+    margin-left: 30px;
+}
+.tenderIndustry{
+    display : flex;
+    flex-direction: row;
+    margin-top: 40px;
+}
+.tenderIndustryLabel{
+    zoom :1.1;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; 
+    margin-top: 10px;
+
+}
+.tenderIndustrySelect{
+    border : 3px solid #0c6980;
+    padding : 8px;
+    width: 60%;
+    margin-left: 30px;
+}
+.tenderProduct{
+
+    display : flex;
+    flex-direction: row;
+    margin-top: 40px;
+}
+.tenderProductLabel{
+    zoom :1.1;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; 
+    margin-top: 10px;
+}
+.tenderProductInput{
+    border : 3px solid #0c6980;
+    padding : 8px;
+    width: 58%;
+    margin-left: 30px;
+}
+.tenderQuantity{
+    display : flex;
+    flex-direction: row;
+    margin-top: 40px;
+}
+.tenderQuantityLabel{
+    zoom :1.1;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; 
+    margin-top: 10px;  
+}
+.tenderQuantityInput{
+    border : 3px solid #0c6980;
+    padding : 8px;
+    width: 58%;
+    margin-left: 30px;
+}
+
+.tenderSubmitButton{
+
+padding : 20px;
+color : white;
+width : 20%;
+background-color : #0c6980;
+margin-top: 40px;
+margin-left: 150px;
+border-radius : 5px;
+
+
+}
+.tenderFinalButton{
+    padding : 20px;
+}

@@ -1,0 +1,23 @@
+.productPage{
+
+    display : flex;
+    flex-direction: row;
+    margin-left : 5px;
+    padding :15px;
+    border-top : 3px solid gray;
+    width :96%;
+}
+.productSearch{
+    border :3px solid gray;
+    padding :11px;
+
+}
+
+.submitButton{
+
+    margin-left: auto;
+    padding : 5px;
+    background-color : #0c6980;
+    color : white;
+
+}
